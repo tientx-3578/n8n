@@ -22,6 +22,9 @@ RUN apk add --no-cache \
 # ── Install n8n ───────────────────────────────────────────────
 RUN npm install -g n8n@2.12.3 --omit=dev
 
+# ── Install additional npm packages ──────────────────────────
+RUN npm install -g docxtemplater docxtemplater-image-module-free
+
 # ── Python task runner source (src/main.py, pyproject.toml) ──
 RUN mkdir -p /usr/local/lib/node_modules/@n8n/task-runner-python \
     && wget -qO- https://github.com/n8n-io/n8n/archive/refs/tags/n8n@2.12.3.tar.gz \
