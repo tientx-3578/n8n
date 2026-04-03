@@ -23,6 +23,7 @@ services:
       - NODES_EXCLUDE=[]
       # ── Security ─────────────────────────────────────────────
       - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY:-change-me-in-env-file}
+      - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE:-false}
 
       # ── Timezone ─────────────────────────────────────────────
       - GENERIC_TIMEZONE=${TIMEZONE:-Asia/Ho_Chi_Minh}
@@ -35,6 +36,9 @@ services:
       # ── Python Task Runner (Code node → Python) ───────────────
       # n8n tự kích hoạt, chỉ cần venv đúng path trong image
       - N8N_RUNNERS_MODE=internal
+      # Cho phép dùng tất cả stdlib và third-party Python packages
+      - N8N_RUNNERS_STDLIB_ALLOW=*
+      - N8N_RUNNERS_EXTERNAL_ALLOW=*
       # Trỏ tới Python trong venv đã tạo trong Dockerfile
 
       # ── Execute Command node ──────────────────────────────────
